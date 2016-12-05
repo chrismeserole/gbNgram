@@ -74,8 +74,8 @@ What the above doesn't show though is how the descriptors of race changed over t
 	  theme_bw()
 	p
 
+<img src="figure/terms2.jpeg" alt="Descriptors" style="width: 300px;"/>
 
-![2Ngram](figure/terms2.jpeg "Descriptors")
 
 As you can see, "Negro" declines in usage in the early 1970s, while "black" rises proportionately. Meanwhile, "African-American" only begins to be used in the 1990s. 
 
