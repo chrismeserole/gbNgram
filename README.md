@@ -26,7 +26,7 @@ The example below uses the base `ngram()` function. It replicates the plot you g
 	  theme_bw()
 	p
 
-![Basic](/figure/basic.svg "Basic Demo")
+![Basic](https://github.com/chrismeserole/gbNgram/tree/master/figure/basic.svg "Basic Demo")
 
 
 ### Ngram
@@ -54,7 +54,7 @@ Suppose you're a researcher interested in race. The following example shows how 
 	p
 
 
-![Terms 1](/figure/terms1.svg "Terms 1")
+![Terms 1](https://github.com/chrismeserole/gbNgram/tree/master/figure/terms1.svg "Terms 1")
 
 
 What that doesn't show though is how the descriptions of race themselves have changed over time. For that, try this: 
@@ -73,7 +73,7 @@ What that doesn't show though is how the descriptions of race themselves have ch
 	  theme_bw()
 	p
 
-![Terms 2](/figure/terms2.svg "Terms 2")
+![Terms 2](https://github.com/chrismeserole/gbNgram/tree/master/figure/terms2.svg "Terms 2")
 
 As you can see, "Negro" declines in usage in the early 1970s, while "black" rises proportionately. Meanwhile, "African-American" only begins to be used in the 1990s. 
 
