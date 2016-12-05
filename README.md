@@ -2,7 +2,7 @@
 
 This package calls Google Ngrams from within R. It has two functions: `ngram()`, which fetches hte data of a basic Google Ngram, and `ngram_group()`, which groups Google's Ngram data for terms that are close variants.  `ngram_group` thus makes it possible to chart joint frequencies in a way that is robust to subtle linguistic shifts over time.
 
-### Ngram
+### ngram()
 
 The example below uses the base `ngram()` function. It replicates the plot you get when you visit https://books.google.com/ngrams/.
 
@@ -29,9 +29,9 @@ The example below uses the base `ngram()` function. It replicates the plot you g
 <img src="figure/basic.jpeg" alt="Default Ngram" width="400px" height="240px"/>
 
 
-### Ngram
+### ngram_group()
 
-The real value of gbNgram is in `ngram_group`. To control for shifts in usage over time, the function returns joint frequencies across a range of terms (and, if specified, their plurals).
+The real value of gbNgram is in `ngram_group`. To control for shifts in usage over time, the function returns joint frequencies across a range of terms. (And, if specified, their plurals.)
 
 Suppose you're a researcher interested in race. The following example shows how different professions have changed over time: 
 
@@ -55,7 +55,7 @@ Suppose you're a researcher interested in race. The following example shows how 
 
 <img src="figure/terms1.jpeg" alt="Terms" width="400px" height="240px"/>
 
-Interesting. The professions move in tandem, except for the mid-1990s, when (presumably) the O.J. Simpson trial leads to a spike in references to lawyers.
+What the line for "black lawyer" shows is actually a joint frequency. More specifically, it shows how often "African-American lawyer", "black lawyer", and "Negro lawyer" appear in a given year -- as well as the plural of each term. Note that the professions move in tandem, except for the mid-1990s, when (presumably) the O.J. Simpson trial leads to a spike in references to lawyers.
 
 
 What the above doesn't show though is how the descriptors of race changed over time. For that, try this: 
@@ -73,8 +73,10 @@ What the above doesn't show though is how the descriptors of race changed over t
 	  ggtitle("Terms in Google Books, 1958-2008") +
 	  theme_bw()
 	p
-
+ 
 <img src="figure/terms2.jpeg" alt="Descriptors" width="400px" height="240px"/>
+
+Here the line for "black" shows how often "black lawyer", "black doctor", or "black politician" appears in a given year -- as well, again, as the plural of each term. Note that there is a significant shift in the term used to describe race in the early 1970s.
 
 
 # Installation
