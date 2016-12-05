@@ -26,7 +26,7 @@ The example below uses the base `ngram()` function. It replicates the plot you g
 	  theme_bw()
 	p
 
-![Default Ngram](figure/basic.jpeg "Default Ngram")
+<img src="figure/basic.jpeg" alt="Default Ngram" width="400px" height="240px"/>
 
 
 ### Ngram
@@ -53,7 +53,7 @@ Suppose you're a researcher interested in race. The following example shows how 
 	  theme_bw()
 	p
 
-![1Ngram](figure/terms1.jpeg "Professions")
+<img src="figure/terms1.jpeg" alt="Terms" width="400px" height="240px"/>
 
 Interesting. The professions move in tandem, except for the mid-1990s, when (presumably) the O.J. Simpson trial leads to a spike in references to lawyers.
 
@@ -74,7 +74,7 @@ What the above doesn't show though is how the descriptors of race changed over t
 	  theme_bw()
 	p
 
-<img src="figure/terms2.jpeg" alt="Descriptors" width="300px" height="180px"/>
+<img src="figure/terms2.jpeg" alt="Descriptors" width="400px" height="240px"/>
 
 
 # Installation
