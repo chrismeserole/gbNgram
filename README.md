@@ -75,7 +75,7 @@ What the above doesn't show though is how the descriptors of race changed over t
 	p
 
 
-![2Ngram](figure/terms1.jpeg "Descriptors")
+![2Ngram](figure/terms2.jpeg "Descriptors")
 
 As you can see, "Negro" declines in usage in the early 1970s, while "black" rises proportionately. Meanwhile, "African-American" only begins to be used in the 1990s. 
 
