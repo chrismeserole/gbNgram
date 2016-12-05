@@ -26,7 +26,7 @@ The example below uses the base `ngram()` function. It replicates the plot you g
 	  theme_bw()
 	p
 
-![Alt text](figure/basic.jpeg "Optional Title")
+![Default Ngram](figure/basic.jpeg "Default Ngram")
 
 
 ### Ngram
@@ -53,11 +53,12 @@ Suppose you're a researcher interested in race. The following example shows how 
 	  theme_bw()
 	p
 
+![1Ngram](figure/terms1.jpeg "Professions")
 
-![Terms 1](https://github.com/chrismeserole/gbNgram/tree/master/figure/terms1.svg "Terms 1")
+Interesting. The professions move in tandem, except for the mid-1990s, when (presumably) the O.J. Simpson trial leads to a spike in references to lawyers.
 
 
-What that doesn't show though is how the descriptions of race themselves have changed over time. For that, try this: 
+What the above doesn't show though is how the descriptors of race changed over time. For that, try this: 
 
 	# plot by qualifer
 	df <- ngram_group(main.terms, adjs, group.by=2,  include.plurals = TRUE,
@@ -73,7 +74,8 @@ What that doesn't show though is how the descriptions of race themselves have ch
 	  theme_bw()
 	p
 
-![Terms 2](https://github.com/chrismeserole/gbNgram/tree/master/figure/terms2.svg "Terms 2")
+
+![2Ngram](figure/terms1.jpeg "Descriptors")
 
 As you can see, "Negro" declines in usage in the early 1970s, while "black" rises proportionately. Meanwhile, "African-American" only begins to be used in the 1990s. 
 
