@@ -74,12 +74,10 @@ What the above doesn't show though is how the descriptors of race changed over t
 	  theme_bw()
 	p
 
-<img src="figure/terms2.jpeg" alt="Descriptors" style="width: 300px;"/>
+<img src="figure/terms2.jpeg" alt="Descriptors" style="width: 50%"/>
 
 
-As you can see, "Negro" declines in usage in the early 1970s, while "black" rises proportionately. Meanwhile, "African-American" only begins to be used in the 1990s. 
-
-### Installation
+# Installation
 
 Currently the only way to install gbNgram is via `devtools`: 
 
