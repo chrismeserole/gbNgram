@@ -1,0 +1,16 @@
+Package: gbNgram
+Type: Package
+Title: Google Ngram Data
+Version: 0.1
+Date: 2016-12-05
+Author: Chris Meserole
+Maintainer: Chris Meserole <chris.meserole@gmail.com>
+Description: Fetches data from Google Ngram plots.
+Depends:
+  dplyr
+Suggests:
+  ggplot2,
+  tidyr
+License: GPL
+LazyData: TRUE
+RoxygenNote: 5.0.1.9000

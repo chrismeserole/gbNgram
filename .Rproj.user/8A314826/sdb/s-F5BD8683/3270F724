@@ -1,0 +1,18 @@
+{
+    "contents" : "#' Get Google Books Ngram Data\n#'\n#' This function fetches the underlying plot data for Google Books Ngrams. It returns a dataframe with the frequency of each term for each year within a specified range.\n#'\n#' @param terms Terms to query against the Google Books corpus. Typically a vector.\n#' @param yr.start The first year to query. Defaults to 1800.\n#' @param yr.end The last year to query. Defaults to 2008.\n#' @param smoothing The number of years to smooth over. Defaults to 0.\n#' @param corpus The corpus to query. Defaults to 15, which corresponds to the English language corpus.\n#' @keywords ngrams\n#' @examples\n#'\n#' library(ggplot2)\n#' library(tidyr)\n#' library(dplyr)\n#'\n#' # set query terms\n#' main.terms <- c(\"soldier\", \"politician\", \"writer\")\n#'\n#' # plot by term\n#' df <- ngram(main.terms)\n#'\n#' df.plot <- df %>%\n#'   gather(term, frequency, -year)\n#'\n#' p <- ggplot(df.plot, aes(year, frequency, colour=term)) + geom_line() +\n#'   ylab(\"Frequency\") +\n#'   xlab(\"Year\") +\n#'   ggtitle(\"Terms in Google Books, 1800-2000\") +\n#'   theme_bw()\n#' p\n\nngram <- function(terms,\n                           yr.start = 1800,\n                           yr.end = 2000,\n                           smoothing = 0,\n                           corpus = 15){\n\n  base.url <- \"https://books.google.com/ngrams/graph?content=\"\n  terms.encoded <- gsub(\" \", \"%20\", terms)\n\n  url <- paste(base.url,\n               paste(c(paste(terms.encoded, collapse = \"%2C\"),\n                       paste(\"year_start\", yr.start, sep=\"=\"),\n                       paste(\"year_end\", yr.end, sep=\"=\"),\n                       paste(\"smoothing\", smoothing, sep=\"=\"),\n                       paste(\"corpus\", corpus, sep=\"=\")),\n                     collapse=\"&\"), sep=\"\")\n\n\n  # get page source\n  my.data.txt <- readLines(url)\n\n  data.string <- my.data.txt[which(grepl(\"var data\", my.data.txt))]\n\n  # get variable names\n  var.names <- strsplit(data.string, \"\\\\\\\"ngram\\\\\\\": \\\\\\\"\")[[1]]\n  for(i in 2:length(var.names)){\n    var.names[i] <- strsplit(var.names[i], \"\\\\\\\"\")[[1]][1]\n  }\n  var.names <- var.names[2:length(var.names)]\n  n.cols <- length(var.names)\n\n  if(length(terms) > length(var.names)){\n    missing.terms <- terms[!(terms %in% var.names)]\n    print(as.character(missing.terms))\n  }\n\n  # get ngram data\n  data.array <- strsplit(data.string, \": \\\\[\")[[1]]\n  for(i in 2:length(data.array)){\n    data.array[i] <- strsplit(data.array[i], \"],\")[[1]][1]\n    df.obj <- as.numeric(unlist(strsplit(data.array[i], \", \")))\n\n    if(i == 2){\n      n.rows <- length(df.obj)\n      df.ngram <- data.frame(matrix(NA, nrow = n.rows, ncol = n.cols))\n    }\n\n    df.ngram[[i-1]] <- df.obj\n\n  }\n  names(df.ngram) <- var.names\n\n  df.ngram$year <- seq(yr.start, yr.end, 1)\n\n  if(exists(\"missing.terms\")){\n\n    df.missing <- data.frame(matrix(0, nrow = n.rows, ncol = length(missing.terms)))\n    names(df.missing) <- missing.terms\n\n    df.ngram <- data.frame(cbind(df.ngram, df.missing))\n    names(df.ngram) <- c(var.names, \"year\", missing.terms)\n\n    df.ngram <- df.ngram[c(terms, \"year\")]\n  }\n\n  return(df.ngram)\n}\n",
+    "created" : 1480959035536.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "390995086",
+    "id" : "3270F724",
+    "lastKnownWriteTime" : 1480959493,
+    "path" : "~/Desktop/workspace/gbNgram/R/ngram.R",
+    "project_path" : "R/ngram.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
