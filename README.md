@@ -26,7 +26,7 @@ The example below uses the base `ngram()` function. It replicates the plot you g
 	  theme_bw()
 	p
 
-![Alt text](https://github.com/chrismeserole/gbNgram/blob/master/figure/basic.svg "Optional Title")
+![Alt text](https://github.com/chrismeserole/gbNgram/blob/master/figure/basic.svg?raw=true "Optional Title")
 
 
 ### Ngram
