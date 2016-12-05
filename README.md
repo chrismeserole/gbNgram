@@ -74,7 +74,7 @@ What the above doesn't show though is how the descriptors of race changed over t
 	  theme_bw()
 	p
 
-<img src="figure/terms2.jpeg" alt="Descriptors"/>
+<img src="figure/terms2.jpeg" alt="Descriptors" width="300px" height="180px"/>
 
 
 # Installation
