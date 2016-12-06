@@ -3,7 +3,9 @@
 
 [Google Ngrams](https://books.google.com/ngrams) are a popular way to show how the usage of specific terms has changed over time. 
 
-This package calls Google Ngrams from within R. It has two functions: `ngram()`, which fetches the underlying data for a single Google Ngram, and `ngram_group()`, which fetches and combines the underlying data for multiple Google Ngrams. `ngram_group` makes it possible to chart joint frequencies in a way that is robust to subtle linguistic shifts over time.
+This package calls Google Ngrams from within R. It has two functions: `ngram()`, which fetches the underlying data for a single Google Ngram, and `ngram_group()`, which fetches and combines the underlying data for multiple Google Ngrams. 
+
+Significantly, `ngram_group` makes it possible to chart joint frequencies in a way that is robust to subtle linguistic shifts over time.
 
 ### ngram()
 
@@ -61,7 +63,7 @@ Suppose you're a researcher interested in how discourse around Muslim authors ha
 
 <img src="figure/ex3.jpeg" alt="Terms" width="400px" height="240px"/>
 
-The shows a steady rise and fall in descriptions of Muslim authors. Significantly, what the line for "Muslim poet" shows is actually a joint frequency rather than a single one. More specifically, it shows how often "Muslim poet", "muslim poet", "Moslem poet" and "moslem poet" appear in a given year, as well as the plural of each term. 
+The graph shows a steady rise and fall in descriptions of Muslim authors. Significantly, what the line for "Muslim poet" shows is actually a joint frequency rather than a single one. More specifically, it shows how often "Muslim poet", "muslim poet", "Moslem poet" and "moslem poet" appear in a given year, as well as the plural of each term. 
 
 What the above doesn't show though is how the word used to describe Muslims has changed over time. For that, try this: 
 
