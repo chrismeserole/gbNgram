@@ -56,7 +56,7 @@ Suppose you're a researcher interested in how discourse around Muslims has chang
 	  theme_bw()
 	p
 
-<img src="figure/ex1.jpeg" alt="Terms" width="400px" height="240px"/>
+<img src="figure/ex3.jpeg" alt="Terms" width="400px" height="240px"/>
 
 What the line for "Muslim poet" shows is actually a joint frequency. More specifically, it shows how often "Muslim poet", "muslim poet", "Moslem poet" and "moslem poet" appear in a given year -- as well as the plural of each term. 
 
@@ -78,7 +78,7 @@ What the above doesn't show though is how the descriptors of race changed over t
 	  theme_bw()
 	p
  
-<img src="figure/ex2.jpeg" alt="Descriptors" width="400px" height="240px"/>
+<img src="figure/ex4.jpeg" alt="Descriptors" width="400px" height="240px"/>
 
 Here the line for "Muslim" shows how often "Muslim poet", "muslim poet", "Muslim historian", "muslim historian",  "Muslim writer" or "muslim writer" appears in a given year -- as well, again, as the plural of each term. 
 
