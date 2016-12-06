@@ -60,7 +60,7 @@ Suppose you're a researcher interested in how discourse around Muslims has chang
 
 What the line for "Muslim poet" shows is actually a joint frequency. More specifically, it shows how often "Muslim poet", "muslim poet", "Moslem poet" and "moslem poet" appear in a given year -- as well as the plural of each term. 
 
-What the above doesn't show though is how the descriptors of race changed over time. For that, try this: 
+What the above doesn't show though is how the word used to describe Muslims has changed over time. For that, try this: 
 
 	# plot by qualifer
 	df <- ngram_group(main.terms, adjs, group.by=2,  
