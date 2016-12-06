@@ -82,6 +82,7 @@ What the above doesn't show though is how the word used to describe Muslims has 
 
 Here the line for "Muslim" shows how often "Muslim poet", "muslim poet", "Muslim historian", "muslim historian",  "Muslim writer" or "muslim writer" appears in a given year -- as well, again, as the plural of each term. 
 
+As you can see, when describing literary figures, "Moslem" was used slightly more often than "Muslim" early in the 20th century -- but afterward it steadily dropped out of use.
 
 # Installation
 
