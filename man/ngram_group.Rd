@@ -5,8 +5,9 @@
 \title{Get Google Books Ngram Data By Group}
 \usage{
 ngram_group(terms, qualifiers, yr.start = 1800, yr.end = 2000,
-  group.by = 1, smoothing = 0, save.data = F, include.plurals = F,
-  data.path = NULL, f.overwrite = F, corpus = 15)
+  group.by = 1, smoothing = 0, include.plurals = F,
+  include.all.cases = F, save.data = F, data.path = NULL,
+  f.overwrite = F, corpus = 15, verbose = F)
 }
 \arguments{
 \item{terms}{Terms to query against the Google Books corpus. Typically a vector.}
@@ -21,15 +22,19 @@ ngram_group(terms, qualifiers, yr.start = 1800, yr.end = 2000,
 
 \item{smoothing}{The number of years to smooth over. Defaults to 0.}
 
-\item{save.data}{Boolean that captures whether to save data to disk. Defaults to FALSE If searching/analysing a large number of terms, this will save a lot of time.}
-
 \item{include.plurals}{Boolean that indicates whether to also include naive plurals in the query terms. Defaults to FALSE. If TRUE, expands `terms` to also include a duplicate of each element, but with an `s` added.}
+
+\item{include.all.cases}{Boolean that indicates whether to query each term twice, once with first letter capitalized and once with it uncapitalized. Defaults to FALSE.}
+
+\item{save.data}{Boolean that captures whether to save data to disk. Defaults to FALSE If searching/analysing a large number of terms, this will save a lot of time.}
 
 \item{data.path}{The path to save data to. Defaults to current working directory.}
 
 \item{f.overwrite}{Boolean that captures whether to overwrite save files. Useful if you use the same terms, but change the year range. Defaults to FALSE.}
 
 \item{corpus}{The corpus to query. Defaults to 15, which corresponds to the English language corpus.}
+
+\item{verbose}{Boolean that indicates whether to print internal messages. Defaults to FALSE.}
 }
 \description{
 This function fetches the underlying plot data for Google Books Ngrams for a sequence of related terms.

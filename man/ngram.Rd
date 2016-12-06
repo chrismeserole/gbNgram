@@ -4,7 +4,8 @@
 \alias{ngram}
 \title{Get Google Books Ngram Data}
 \usage{
-ngram(terms, yr.start = 1800, yr.end = 2000, smoothing = 0, corpus = 15)
+ngram(terms, yr.start = 1800, yr.end = 2000, smoothing = 0, corpus = 15,
+  verbose = F)
 }
 \arguments{
 \item{terms}{Terms to query against the Google Books corpus. Typically a vector.}
@@ -16,6 +17,8 @@ ngram(terms, yr.start = 1800, yr.end = 2000, smoothing = 0, corpus = 15)
 \item{smoothing}{The number of years to smooth over. Defaults to 0.}
 
 \item{corpus}{The corpus to query. Defaults to 15, which corresponds to the English language corpus.}
+
+\item{verbose}{Boolean that indicates whether to print internal messages.}
 }
 \description{
 This function fetches the underlying plot data for Google Books Ngrams. It returns a dataframe with the frequency of each term for each year within a specified range.

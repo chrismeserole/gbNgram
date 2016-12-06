@@ -7,12 +7,14 @@
 #' @param yr.start The first year to query. Defaults to 1800.
 #' @param yr.end The last year to query. Defaults to 2008.
 #' @param group.by Whether to group results by `terms` (1) or `qualifiers` (2). Defaults to 1.
+#' @param include.all.cases Boolean that indicates whether to query each term twice, once with first letter capitalized and once with it uncapitalized. Defaults to FALSE.
 #' @param include.plurals Boolean that indicates whether to also include naive plurals in the query terms. Defaults to FALSE. If TRUE, expands `terms` to also include a duplicate of each element, but with an `s` added.
 #' @param smoothing The number of years to smooth over. Defaults to 0.
 #' @param data.path The path to save data to. Defaults to current working directory.
 #' @param f.overwrite Boolean that captures whether to overwrite save files. Useful if you use the same terms, but change the year range. Defaults to FALSE.
 #' @param save.data Boolean that captures whether to save data to disk. Defaults to FALSE If searching/analysing a large number of terms, this will save a lot of time.
 #' @param corpus The corpus to query. Defaults to 15, which corresponds to the English language corpus.
+#' @param verbose Boolean that indicates whether to print internal messages. Defaults to FALSE.
 #' @keywords ngrams
 #' @export ngram_group
 #' @examples
@@ -77,33 +79,33 @@ ngram_group <- function(terms,
   capFirstLetter <- function( str ){
     return(paste0(toupper(substr(str, 1, 1)), substr(str, 2, nchar(str))))
   }
-  
+
   unCapFirstLetter <- function( str ){
     return(paste0(tolower(substr(str, 1, 1)), substr(str, 2, nchar(str))))
   }
-  
+
   capitalize <- function( vec ) {
     return(sapply(vec, function( x ) { capFirstLetter( x ) } ))
   }
-  
+
   uncapitalize <- function( vec ) {
     return(sapply(vec, function( x ) { unCapFirstLetter( x ) } ))
   }
-  
+
 
   #
   # start function
   #
-  
+
   if(is.null( data.path )){
     data.path <- paste0( getwd(), "/" )
   }
 
   if(group.by == 1){
-    
+
     for(i in 1:length( terms )){
 
-      
+
       f.path <- paste0( data.path, "gb-ngram-", terms[i], ".RData" )
 
       if(!(file.exists( f.path )) || f.overwrite == T){
@@ -120,18 +122,18 @@ ngram_group <- function(terms,
             q <- terms[i]
           }
         }
-        
+
         if(include.plurals == T){
           q <- c( q, plural( q ) )
         } else {
           q <- q
         }
-        
+
         if(verbose == T){
           cat("\nSearching for the following terms in Google Books: \n")
           print(as.character(q))
         }
-        
+
         df.query <- ngram( q, yr.start, yr.end, smoothing, corpus, verbose )
         if(save.data == T){
           saveRDS( df.query, file = f.path )
@@ -166,7 +168,7 @@ ngram_group <- function(terms,
         if(include.all.cases == T){
           q <- c(capitalize(q), uncapitalize(q))
         }
-        
+
         if(include.plurals == T){
           q <- c( q, plural( q ) )
         } else {
@@ -177,7 +179,7 @@ ngram_group <- function(terms,
           cat("\nSearching for the following terms in Google Books: \n")
           print(as.character(q))
         }
-                
+
         df.query <- ngram( q, yr.start, yr.end, smoothing, corpus, verbose )
         if(save.data == T){
           saveRDS( df.query, file = f.path )
