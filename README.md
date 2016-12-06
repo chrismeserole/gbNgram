@@ -52,7 +52,7 @@ Suppose you're a researcher interested in how discourse around Muslims has chang
 	p <- ggplot(df.plot, aes(year, frequency, colour=term)) + geom_line() +
 	  ylab("Frequency") +
 	  xlab("Year") +
-	  ggtitle("Terms in Google Books, 1958-2008") +
+	  ggtitle("Terms in Google Books, 1908-2008") +
 	  theme_bw()
 	p
 
