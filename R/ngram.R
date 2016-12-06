@@ -7,6 +7,7 @@
 #' @param yr.end The last year to query. Defaults to 2008.
 #' @param smoothing The number of years to smooth over. Defaults to 0.
 #' @param corpus The corpus to query. Defaults to 15, which corresponds to the English language corpus.
+#' @param verbose Boolean that indicates whether to print internal messages.
 #' @keywords ngrams
 #' @examples
 #'
@@ -31,10 +32,11 @@
 #' p
 
 ngram <- function(terms,
-                           yr.start = 1800,
-                           yr.end = 2000,
-                           smoothing = 0,
-                           corpus = 15){
+                  yr.start = 1800,
+                  yr.end = 2000,
+                  smoothing = 0,
+                  corpus = 15,
+                  verbose = F){
 
   base.url <- "https://books.google.com/ngrams/graph?content="
   terms.encoded <- gsub(" ", "%20", terms)
@@ -63,7 +65,10 @@ ngram <- function(terms,
 
   if(length(terms) > length(var.names)){
     missing.terms <- terms[!(terms %in% var.names)]
-    print(as.character(missing.terms))
+    if(verbose == T){
+      cat("\nThe following terms never appear in Google books: \n")
+      print(as.character(missing.terms))
+    }
   }
 
   # get ngram data

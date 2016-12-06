@@ -31,13 +31,13 @@ The example below uses the base `ngram()` function. It replicates the plot you g
 
 ### ngram_group()
 
-The real value of gbNgram is in `ngram_group`. To control for shifts in usage over time, the function returns joint frequencies across a range of terms. (And, if specified, their plurals.)
+The real value of gbNgram is in `ngram_group`. To control for shifts in usage over time, the function returns joint frequencies across a range of terms. 
 
-Suppose you're a researcher interested in race. The following example shows how different professions have changed over time: 
+Suppose you're a researcher interested in how discourse around race has changed over time. The following example shows how different professions have changed over time: 
 
 	# set query terms
 	main.terms <- c("doctor", "lawyer", "politician")
-	adjs <- c("African-American", "Negro", "black")
+	adjs <- c("black", "African-American", "Negro")
 
 	# plot by term
 	df <- ngram_group(main.terms, adjs, include.plurals = TRUE,

@@ -58,11 +58,13 @@ ngram_group <- function(terms,
                                  yr.end = 2000,
                                  group.by = 1,
                                  smoothing = 0,
-                                 save.data = F,
                                  include.plurals = F,
+                                 include.all.cases = F,
+                                 save.data = F,
                                  data.path = NULL,
                                  f.overwrite = F,
-                                 corpus = 15) {
+                                 corpus = 15,
+                                 verbose = F) {
 
   prefix <- function(str, terms){
     return(sapply(terms, function(x) {paste(str, x)}))
@@ -72,23 +74,65 @@ ngram_group <- function(terms,
     return(sapply(terms, function(x) {paste0(x, "s")}))
   }
 
+  capFirstLetter <- function( str ){
+    return(paste0(toupper(substr(str, 1, 1)), substr(str, 2, nchar(str))))
+  }
+  
+  unCapFirstLetter <- function( str ){
+    return(paste0(tolower(substr(str, 1, 1)), substr(str, 2, nchar(str))))
+  }
+  
+  capitalize <- function( vec ) {
+    return(sapply(vec, function( x ) { capFirstLetter( x ) } ))
+  }
+  
+  uncapitalize <- function( vec ) {
+    return(sapply(vec, function( x ) { unCapFirstLetter( x ) } ))
+  }
+  
+
+  #
+  # start function
+  #
+  
   if(is.null( data.path )){
     data.path <- paste0( getwd(), "/" )
   }
 
   if(group.by == 1){
+    
     for(i in 1:length( terms )){
 
+      
       f.path <- paste0( data.path, "gb-ngram-", terms[i], ".RData" )
 
       if(!(file.exists( f.path )) || f.overwrite == T){
-        q <- prefix( qualifiers, terms[i] )
-        if(include.plurals == T){
-          query.terms <- c( q, plural( q ) )
+        if(!(is.null( qualifiers ))){
+          q <- qualifiers
+          if(include.all.cases == T){
+              q <- c(capitalize(q), uncapitalize(q))
+          }
+          q <- prefix( q, terms[i] )
         } else {
-          query.terms <- q
+          if(include.all.cases == T){
+            q <- c(capitalize( terms[i] ), uncapitalize( terms[i] ))
+          } else {
+            q <- terms[i]
+          }
         }
-        df.query <- ngram( query.terms, yr.start, yr.end, smoothing, corpus )
+        
+        if(include.plurals == T){
+          q <- c( q, plural( q ) )
+        } else {
+          q <- q
+        }
+        
+        if(verbose == T){
+          cat("\nSearching for the following terms in Google Books: \n")
+          print(as.character(q))
+        }
+        
+        df.query <- ngram( q, yr.start, yr.end, smoothing, corpus, verbose )
         if(save.data == T){
           saveRDS( df.query, file = f.path )
         }
@@ -118,12 +162,23 @@ ngram_group <- function(terms,
 
       if(!(file.exists( f.path )) || f.overwrite == T){
         q <- prefix( qualifiers[i], terms)
-        if(include.plurals == T){
-          query.terms <- c( q, plural( q ) )
-        } else {
-          query.terms <- q
+
+        if(include.all.cases == T){
+          q <- c(capitalize(q), uncapitalize(q))
         }
-        df.query <- ngram( query.terms, yr.start, yr.end, smoothing, corpus )
+        
+        if(include.plurals == T){
+          q <- c( q, plural( q ) )
+        } else {
+          q <- q
+        }
+
+        if(verbose == T){
+          cat("\nSearching for the following terms in Google Books: \n")
+          print(as.character(q))
+        }
+                
+        df.query <- ngram( q, yr.start, yr.end, smoothing, corpus, verbose )
         if(save.data == T){
           saveRDS( df.query, file = f.path )
         }
